@@ -44,9 +44,12 @@
 				  <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio de venta del producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
 				</div>
 			  </div>
-			 
-			 
-			
+			  <div class="form-group">
+				<label for="stock" class="col-sm-3 control-label">Stock</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="stock" name="stock" placeholder="Stock del Producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				</div>
+			  </div>			 
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

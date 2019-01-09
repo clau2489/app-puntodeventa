@@ -5,7 +5,8 @@ body{
   margin-top:0.5em;
 }
 .navbar-default {
-  background-color: #317d7f;
+    background-color: #000;
+    font-size: initial;
 }
 .navbar-default .navbar-brand {
   color: #ffffff;
@@ -133,4 +134,13 @@ body{
 }
 a {
 	color: #3c763d;
+}
+.table {
+    font-size: initial;
+}
+.control-label {
+    font-size: initial;
+}
+.form-control {
+    font-size: initial;
 }

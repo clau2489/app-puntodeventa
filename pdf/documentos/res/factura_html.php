@@ -53,26 +53,12 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
     <br>
     
 
-	
+	<br>
+	<br>
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:50%;" class='midnight-blue'>FACTURAR A</td>
         </tr>
 		<tr>
-           <td style="width:50%;" >
-			<?php 
-				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
-				$rw_cliente=mysqli_fetch_array($sql_cliente);
-				echo $rw_cliente['nombre_cliente'];
-				echo "<br>";
-				echo $rw_cliente['direccion_cliente'];
-				echo "<br> Teléfono: ";
-				echo $rw_cliente['telefono_cliente'];
-				echo "<br> Email: ";
-				echo $rw_cliente['email_cliente'];
-			?>
-			
-		   </td>
         </tr>
         
    
@@ -81,32 +67,42 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
        <br>
 		<table cellspacing="0" style="width: 100%; text-align: left; font-size: 11pt;">
         <tr>
-           <td style="width:35%;" class='midnight-blue'>VENDEDOR</td>
-		  <td style="width:25%;" class='midnight-blue'>FECHA</td>
-		   <td style="width:40%;" class='midnight-blue'>FORMA DE PAGO</td>
+        	<td style="width:25%;" class='midnight-blue'>Fecha</td>
+		  	<td style="width:25%;" class='midnight-blue'>Cliente</td>
+		   	<td style="width:25%;" class='midnight-blue'>Forma de Pago</td>
+		   	<td style="width:25%;" class='midnight-blue'>Atendido por</td>
         </tr>
 		<tr>
-           <td style="width:35%;">
+			<td style="width:25%;"><?php echo date("d/m/Y");?></td>
+           	<td style="width:25%;">
 			<?php 
-				$sql_user=mysqli_query($con,"select * from users where user_id='$id_vendedor'");
-				$rw_user=mysqli_fetch_array($sql_user);
-				echo $rw_user['firstname']." ".$rw_user['lastname'];
+				$sql_cliente=mysqli_query($con,"select * from clientes where id_cliente='$id_cliente'");
+				$rw_cliente=mysqli_fetch_array($sql_cliente);
+				echo $rw_cliente['nombre_cliente'];
 			?>
-		   </td>
-		  <td style="width:25%;"><?php echo date("d/m/Y");?></td>
-		   <td style="width:40%;" >
+		   	</td>
+		   	<td style="width:25%;" >
 				<?php 
 				if ($condiciones==1){echo "Efectivo";}
 				elseif ($condiciones==2){echo "Cheque";}
 				elseif ($condiciones==3){echo "Transferencia bancaria";}
 				elseif ($condiciones==4){echo "Crédito";}
 				?>
-		   </td>
+		   	</td>			
+           	<td style="width:25%;">
+			<?php 
+				$sql_user=mysqli_query($con,"select * from users where user_id='$id_vendedor'");
+				$rw_user=mysqli_fetch_array($sql_user);
+				echo $rw_user['firstname']." ".$rw_user['lastname'];
+			?>
+		   	</td>
         </tr>
 		
         
    
     </table>
+	<br>
+	<br>
 	<br>
   
     <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
@@ -146,10 +142,13 @@ while ($row=mysqli_fetch_array($sql))
 
         <tr>
             <td class='<?php echo $clase;?>' style="width: 10%; text-align: center"><?php echo $cantidad; ?></td>
+            <br>
             <td class='<?php echo $clase;?>' style="width: 60%; text-align: left"><?php echo $nombre_producto;?></td>
+            <br>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_venta_f;?></td>
+            <br>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_total_f;?></td>
-            
+            <br>
         </tr>
 
 	<?php 

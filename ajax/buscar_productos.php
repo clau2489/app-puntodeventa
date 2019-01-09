@@ -82,10 +82,11 @@
 				<tr  class="info">
 					<th>Código</th>
 					<th>Producto</th>
+					<th>Precio</th>
+					<th>Stock</th>
 					<th>Estado</th>
-					<th>Agregado</th>
-					<th class='text-right'>Precio</th>
-					<th class='text-right'>Acciones</th>
+					<th>Agregado</th>					
+					<th>Acciones</th>
 					
 				</tr>
 				<?php
@@ -98,6 +99,7 @@
 						else {$estado="Inactivo";}
 						$date_added= date('d/m/Y', strtotime($row['date_added']));
 						$precio_producto=$row['precio_producto'];
+						$stock=$row['stock'];
 					?>
 					
 					<input type="hidden" value="<?php echo $codigo_producto;?>" id="codigo_producto<?php echo $id_producto;?>">
@@ -108,13 +110,12 @@
 						
 						<td><?php echo $codigo_producto; ?></td>
 						<td ><?php echo $nombre_producto; ?></td>
+						<td><?php echo $simbolo_moneda;?><?php echo number_format($precio_producto,2);?></td>
+						<td><?php echo $stock;?></td>
 						<td><?php echo $estado;?></td>
 						<td><?php echo $date_added;?></td>
-						<td><?php echo $simbolo_moneda;?><span class='pull-right'><?php echo number_format($precio_producto,2);?></span></td>
-					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-					<a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
-						
+						<td ><a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a><a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						</td>	
 					</tr>
 					<?php
 				}

@@ -124,10 +124,12 @@ $( "#editar_producto" ).submit(function( event ) {
 			var nombre_producto = $("#nombre_producto"+id).val();
 			var estado = $("#estado"+id).val();
 			var precio_producto = $("#precio_producto"+id).val();
+			var stock = $("#stock"+id).val();
 			$("#mod_id").val(id);
 			$("#mod_codigo").val(codigo_producto);
 			$("#mod_nombre").val(nombre_producto);
 			$("#mod_precio").val(precio_producto);
 			$("#mod_estado").val(estado);
+			$("#mod_stock").val(stock);
 		}
 </script>

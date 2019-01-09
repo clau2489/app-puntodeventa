@@ -1,6 +1,6 @@
 body, html {
     height: 100%;
-    background-color: #317d7f;
+    background-color: white;
 }
 
 .card-container.card {
@@ -27,8 +27,8 @@ body, html {
 }
 
 .profile-img-card {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 190px;
     margin: 0 auto 10px;
     display: block;
     -moz-border-radius: 50%;

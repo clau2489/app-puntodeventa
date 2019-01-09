@@ -9,11 +9,14 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 			$errors[] = "Selecciona el estado del producto";
 		} else if (empty($_POST['precio'])){
 			$errors[] = "Precio de venta vacío";
+		} else if (empty($_POST['stock'])){
+			$errors[] = "Stock vacío";			
 		} else if (
 			!empty($_POST['codigo']) &&
 			!empty($_POST['nombre']) &&
 			$_POST['estado']!="" &&
-			!empty($_POST['precio'])
+			!empty($_POST['precio']) &&
+			!empty($_POST['stock'])
 		){
 		/* Connect To Database*/
 		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -23,13 +26,14 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
 		$estado=intval($_POST['estado']);
 		$precio_venta=floatval($_POST['precio']);
+		$stock=($_POST['stock']);
 		$date_added=date("Y-m-d H:i:s");
-		$sql="INSERT INTO products (codigo_producto, nombre_producto, status_producto, date_added, precio_producto) VALUES ('$codigo','$nombre','$estado','$date_added','$precio_venta')";
+		$sql="INSERT INTO products (codigo_producto, nombre_producto, status_producto, date_added, precio_producto, stock) VALUES ('$codigo','$nombre','$estado','$date_added','$precio_venta','$stock')";
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
-				$messages[] = "Producto ha sido ingresado satisfactoriamente.";
+				$messages[] = "Producto ingresado correctamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Error. Inténtelo nuevamente.".mysqli_error($con);
 			}
 		} else {
 			$errors []= "Error desconocido.";
