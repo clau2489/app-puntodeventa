@@ -1,9 +1,4 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -120,8 +115,8 @@
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script type="text/javascript" src="js/nueva_factura.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="js/jquery-ui.css">
+    <script src="js/jquery-ui.js"></script>
 	<script>
 		$(function() {
 						$("#nombre_cliente").autocomplete({

@@ -1,9 +1,4 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -117,9 +112,8 @@
 							<div class="col-md-2">
 								<select class='form-control input-sm ' id="condiciones" name="condiciones">
 									<option value="1" <?php if ($condiciones==1){echo "selected";}?>>Efectivo</option>
-									<option value="2" <?php if ($condiciones==2){echo "selected";}?>>Cheque</option>
-									<option value="3" <?php if ($condiciones==3){echo "selected";}?>>Transferencia bancaria</option>
-									<option value="4" <?php if ($condiciones==4){echo "selected";}?>>Crédito</option>
+									<option value="2" <?php if ($condiciones==2){echo "selected";}?>>Tarjeta Débito</option>
+									<option value="3" <?php if ($condiciones==3){echo "selected";}?>>Tarjeta Credito</option>
 								</select>
 							</div>
 							<div class="col-md-2">
@@ -166,8 +160,8 @@
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script type="text/javascript" src="js/editar_factura.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="js/jquery-ui.css">
+    <script src="js/jquery-ui.js"></script>
 	<script>
 		$(function() {
 						$("#nombre_cliente").autocomplete({

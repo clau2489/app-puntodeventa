@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-01-2019 a las 00:25:54
+-- Tiempo de generación: 10-01-2019 a las 00:20:40
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 5.6.36
 
@@ -43,7 +43,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre_cliente`, `telefono_cliente`, `email_cliente`, `direccion_cliente`, `status_cliente`, `date_added`) VALUES
-(1, 'Consumidor Final', '', '', '', 1, '2019-01-08 21:45:28');
+(1, 'Consumidor Final', '', '', '', 1, '2019-01-08 21:45:28'),
+(2, 'Omar Diaz', '11-1212-2628', 'omar-d@hotmail.com', '', 1, '2019-01-10 00:14:31'),
+(3, 'Claudio Coronel Milla', '11-6030-0122', 'clau_coronelmilla@hotmail.com', '', 1, '2019-01-10 00:16:18');
 
 -- --------------------------------------------------------
 
@@ -70,7 +72,6 @@ INSERT INTO `currencies` (`id`, `name`, `symbol`, `precision`, `thousand_separat
 (2, 'Euro', 'â‚¬', '2', '.', ',', 'EUR'),
 (3, 'US Dollar', '$', '2', ',', '.', 'USD');
 
-
 -- --------------------------------------------------------
 
 --
@@ -85,6 +86,24 @@ CREATE TABLE `detalle_factura` (
   `precio_venta` double NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `detalle_factura`
+--
+
+INSERT INTO `detalle_factura` (`id_detalle`, `numero_factura`, `id_producto`, `cantidad`, `precio_venta`) VALUES
+(27, 8, 3, 1, 50),
+(26, 8, 1, 1, 90),
+(17, 3, 1, 1, 90),
+(18, 3, 2, 1, 80),
+(19, 4, 1, 1, 90),
+(20, 4, 2, 1, 80),
+(21, 5, 2, 1, 80),
+(22, 5, 1, 1, 90),
+(23, 6, 2, 1, 80),
+(24, 6, 1, 1, 90),
+(25, 7, 7, 1, 250);
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `facturas`
@@ -101,6 +120,19 @@ CREATE TABLE `facturas` (
   `estado_factura` tinyint(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `facturas`
+--
+
+INSERT INTO `facturas` (`id_factura`, `numero_factura`, `fecha_factura`, `id_cliente`, `id_vendedor`, `condiciones`, `total_venta`, `estado_factura`) VALUES
+(10, 8, '2019-01-10 00:19:39', 3, 1, '1', '140.00', 2),
+(5, 3, '2019-01-09 22:48:00', 1, 1, '2', '170.00', 1),
+(6, 4, '2019-01-09 23:54:17', 3, 1, '2', '170.00', 2),
+(7, 5, '2019-01-09 23:59:15', 1, 1, '3', '170.00', 1),
+(8, 6, '2019-01-10 00:01:44', 2, 1, '1', '170.00', 2),
+(9, 7, '2019-01-10 00:08:00', 1, 1, '2', '250.00', 2);
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `perfil`
@@ -151,7 +183,10 @@ INSERT INTO `products` (`id_producto`, `codigo_producto`, `nombre_producto`, `st
 (1, '1', 'Coca Cola Light 225cm', 1, '2019-01-08 21:50:58', 90, 0),
 (2, '2', 'Cerveza Quilmes x 750cc', 1, '2019-01-08 22:15:41', 80, 0),
 (3, '3', 'Papas Cheddar grandes', 1, '2019-01-08 23:08:38', 50, 40),
-(4, '4', 'Milanesa completa', 1, '2019-01-08 23:41:10', 60, 5);
+(4, '4', 'Milanesa completa', 1, '2019-01-08 23:41:10', 60, 10),
+(5, '5', 'Milanesa Napolitana', 1, '2019-01-09 23:26:50', 85, 10),
+(6, '6', 'Reserva de Cancha c/luz', 1, '2019-01-10 00:06:30', 350, 100),
+(7, '7', 'Reserva de cancha sin luz', 1, '2019-01-10 00:07:02', 250, 100);
 
 -- --------------------------------------------------------
 
@@ -166,6 +201,17 @@ CREATE TABLE `tmp` (
   `precio_tmp` double(8,2) DEFAULT NULL,
   `session_id` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `tmp`
+--
+
+INSERT INTO `tmp` (`id_tmp`, `id_producto`, `cantidad_tmp`, `precio_tmp`, `session_id`) VALUES
+(23, 1, 1, 90.00, '9tq6a0gs2u255tpk738j6uo1o1'),
+(22, 3, 1, 50.00, '9tq6a0gs2u255tpk738j6uo1o1'),
+(21, 2, 1, 80.00, '9tq6a0gs2u255tpk738j6uo1o1'),
+(20, 1, 1, 90.00, '9tq6a0gs2u255tpk738j6uo1o1'),
+(19, 1, 1, 90.00, '9tq6a0gs2u255tpk738j6uo1o1');
 
 -- --------------------------------------------------------
 
@@ -256,25 +302,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_factura`
 --
 ALTER TABLE `detalle_factura`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `facturas`
 --
 ALTER TABLE `facturas`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`
@@ -286,13 +332,13 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tmp`
 --
 ALTER TABLE `tmp`
-  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_tmp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
